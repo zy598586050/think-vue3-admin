@@ -69,20 +69,20 @@
 ├── package.json
 ```
 
-![image](​./public/login​.png)
+![image](​https://github.com/zy598586050/think-vue3-admin/blob/master/public/login​.png)
 
 <br/>
 
-![image](​./public/user.png)
+![image](​https://github.com/zy598586050/think-vue3-admin/blob/master/public/user.png)
 
 <br/>
 
-![image](​./public/mech.png)
+![image](​https://github.com/zy598586050/think-vue3-admin/blob/master/public/mech.png)
 
 <br/>
 
-![image](​./public/role.png)
+![image](​https://github.com/zy598586050/think-vue3-admin/blob/master/public/role.png)
 
 <br/>
 
-![image](​./public/auth.png)
+![image](​https://github.com/zy598586050/think-vue3-admin/blob/master/public/auth.png)
