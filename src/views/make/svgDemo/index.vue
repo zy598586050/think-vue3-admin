@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import { toRefs, reactive } from 'vue';
-import logoMini from '/@/assets/logo-mini.svg';
+import logoMini from '@/assets/logo-mini.svg';
 
 const state = reactive({
 	tableData: [
