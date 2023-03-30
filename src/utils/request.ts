@@ -1,97 +1,62 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-import config from "@/config";
-import router from "@/router";
-import { useUserStore } from "@/store";
-import { ElMessage, ElMessageBox } from "element-plus";
-import { useStorage } from "@vueuse/core";
-import { clerRoutes } from "@/utils/asyncRoutes";
+import axios from 'axios';
+import { ElMessage, ElMessageBox } from 'element-plus';
+import { Session } from '@/utils/storage';
 
-interface OptionsType {
-  url: string;
-  method?: string;
-  params?: any;
-  data?: any;
-  mock?: boolean;
-}
-
+// 配置新建一个 axios 实例
 const service = axios.create({
-  baseURL: config.baseUrl,
-  timeout: 8000,
+	baseURL: import.meta.env.VITE_API_URL as any,
+	timeout: 50000,
+	headers: { 'Content-Type': 'application/json' },
 });
 
-// 请求拦截
+// 添加请求拦截器
 service.interceptors.request.use(
-  (request) => {
-    const headers = request?.headers;
-    const locData = useStorage(config.namespace, {
-      token: "",
-    });
-    const token = locData.value.token;
-    if (!headers.Authorization) {
-      headers.Authorization = `Bearer ${token}`;
-    }
-    return request;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
+	(config) => {
+		// 在发送请求之前做些什么 token
+		if (Session.get('token')) {
+			config.headers['Authorization'] = `Bearer ${Session.get('token')}`
+		}
+		return config;
+	},
+	(error) => {
+		// 对请求错误做些什么
+		return Promise.reject(error);
+	}
 );
 
-// 响应拦截
+// 添加响应拦截器
 service.interceptors.response.use(
-  (response) => {
-    return response?.data;
-  },
-  (error) => {
-    if (error?.response?.data) {
-      if (
-        error?.response?.data?.errorCode === 30001 &&
-        window.location.href.split("#")[1] !== "/login"
-      ) {
-        const userStore = useUserStore();
-        ElMessageBox.alert("Token已过期，请重新登录。", "提示", {
-          confirmButtonText: "重新登录",
-          cancelButtonText: "取消",
-          showClose: false,
-          type: "warning",
-        }).then(() => {
-          // 重新登录
-          userStore.clearToken();
-          userStore.clearUserInfo();
-          clerRoutes(userStore, router);
-          router.push({ path: "/login" });
-        });
-      } else {
-        ElMessage.error(error?.response?.data?.msg);
-      }
-    }
-    return Promise.reject(error);
-  }
+	(response) => {
+		// 对响应数据做点什么
+		const res = response.data;
+		const code = response.data.code
+		if (code === 401) {
+			ElMessageBox.alert('登录状态已过期，请重新登录', '提示', {confirmButtonText:'确定'})
+				.then(() => {
+					Session.clear(); // 清除浏览器全部临时缓存
+					window.location.href = '/'; // 去登录页
+				})
+				.catch(() => {});
+		} else if (code !== 0) {
+			ElMessage.error(res.message)
+			return Promise.reject(new Error(res.message))
+		} else {
+			return res
+		}
+	},
+	(error) => {
+		// 对响应错误做点什么
+		if (error.message.indexOf('timeout') != -1) {
+			ElMessage.error('网络超时');
+		} else if (error.message == 'Network Error') {
+			ElMessage.error('网络连接错误');
+		} else {
+			if (error.response?.data) ElMessage.error(error.response.statusText);
+			else ElMessage.error('接口路径找不到');
+		}
+		return Promise.reject(error);
+	}
 );
 
-const request: any = (options: OptionsType) => {
-  options.method = options?.method?.toLowerCase() || "get";
-  // get应该用params传参，防止post写习惯了突然改get, data参数自动转params
-  if (!options.params && options.method === "get") {
-    options.params = options.data;
-  }
-  const isMock = options.mock || config.mock;
-  if (config.env === "production") {
-    service.defaults.baseURL = config.baseUrl;
-  } else {
-    service.defaults.baseURL = isMock ? config.mockUrl : config.baseUrl;
-  }
-  return service(options);
-};
-
-["get", "post", "put", "delete", "patch"].forEach((item: string) => {
-  request[item] = (url: string, options: OptionsType) => {
-    return request({
-      method: item,
-      ...options,
-      url,
-    });
-  };
-});
-
-export default request;
+// 导出 axios 实例
+export default service;

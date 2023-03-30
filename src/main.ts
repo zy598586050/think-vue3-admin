@@ -1,44 +1,58 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import router from "./router/index";
-import "element-plus/dist/index.css";
-import "virtual:windi.css";
-import ElementPlus from "element-plus";
-import { createPinia } from "pinia";
-import piniaPluginPersist from "pinia-plugin-persist";
-import * as ElementPlusIconsVue from "@element-plus/icons-vue";
-import { useUserStore } from "@/store";
-import zhCn from "element-plus/es/locale/lang/zh-cn";
+import { createApp } from 'vue'
+import App from './App.vue'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+import '@/theme/index.scss'
+import { i18n } from '@/i18n'
+import mitt from 'mitt'
+import router from './router'
+import pinia from '@/store'
+import other from '@/utils/other'
+import { directive } from '@/utils/directive'
+import { getUpFileUrl, handleTree, parseTime, selectDictLabel } from '@/utils/thinkvue3'
+import { getItems, setItems, getOptionValue, isEmpty } from '@/api/items'
+import { useDict } from '@/api/system/dict/data'
 
-const app = createApp(App);
+// @ts-ignore
+import VueGridLayout from 'vue-grid-layout'
+// 大文件上传组件
+// @ts-ignore
+import uploader from 'vue-simple-uploader'
+// 分页组件
+import pagination from '@/components/pagination/index.vue'
 
-const pinia = createPinia();
-pinia.use(piniaPluginPersist);
+const app = createApp(App)
 
-app.use(pinia);
-app.use(router);
-app.use(ElementPlus, {
-  locale: zhCn,
-});
+directive(app)
+other.elSvg(app)
+app.component('pagination', pagination)
+// @ts-ignore
+app.use(ElementPlus, { i18n: i18n.global.t })
+.use(router)
+.use(pinia)
+.use(i18n)
+.use(VueGridLayout)
+.use(uploader)
+.mount('#app')
 
-for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-  app.component(key, component);
+app.config.globalProperties.getUpFileUrl = getUpFileUrl
+app.config.globalProperties.handleTree = handleTree
+app.config.globalProperties.selectDictLabel = selectDictLabel
+app.config.globalProperties.parseTime = parseTime
+
+app.config.globalProperties.getItems = getItems
+app.config.globalProperties.setItems = setItems
+app.config.globalProperties.getOptionValue = getOptionValue
+app.config.globalProperties.isEmpty = isEmpty
+app.config.globalProperties.useDict = useDict
+
+const globalProperties={
+    mittBus: mitt(),
+    i18n
 }
 
-// 自定义按钮权限校验
-app.directive("has", {
-  beforeMount: (el, binding) => {
-    // 获取按钮权限
-    const userStore: any = useUserStore();
-    const btnList = userStore.userInfo.auth_array;
-    const value = binding.value;
-    const hasPermission = btnList.includes(value);
-    if (!hasPermission) {
-      setTimeout(() => {
-        el.parentNode.removeChild(el);
-      }, 0);
-    }
-  },
-});
-
-app.mount("#app");
+//必须合并vue默认的变量，否则有问题
+app.config.globalProperties = Object.assign(
+    app.config.globalProperties,
+    globalProperties
+)

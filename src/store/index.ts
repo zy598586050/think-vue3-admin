@@ -1,3 +1,8 @@
-import useUserStore from "./modules/user";
+// https://pinia.vuejs.org/
+import { createPinia } from 'pinia'
 
-export { useUserStore };
+// 创建
+const pinia = createPinia()
+
+// 导出
+export default pinia
