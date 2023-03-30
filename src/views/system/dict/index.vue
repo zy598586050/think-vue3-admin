@@ -50,7 +50,7 @@
           </el-form-item>
         </el-form>
       </div>
-      <el-table :data="tableData.data" style="width: 100%" @selection-change="handleSelectionChange">
+      <el-table :data="tableData.data" style="width: 100%" @selection-change="handleSelectionChange" border>
         <el-table-column type="selection" width="55" align="center" />
         <el-table-column label="字典ID" align="center" prop="dictId" width="120" />
         <el-table-column label="字典名称" align="center" prop="dictName" :show-overflow-tooltip="true" />
@@ -61,15 +61,15 @@
             </router-link>
           </template>
         </el-table-column>
-        <el-table-column prop="status" label="字典状态" show-overflow-tooltip>
+        <el-table-column prop="status" label="字典状态" align="center" show-overflow-tooltip>
           <template #default="scope">
             <el-tag type="success" v-if="scope.row.status">启用</el-tag>
             <el-tag type="info" v-else>禁用</el-tag>
           </template>
         </el-table-column>
         <el-table-column prop="remark" label="字典描述" show-overflow-tooltip></el-table-column>
-        <el-table-column prop="createdAt" label="创建时间" show-overflow-tooltip width="180"></el-table-column>
-        <el-table-column label="操作" width="200">
+        <el-table-column prop="createdAt" label="创建时间" show-overflow-tooltip width="180" align="center"></el-table-column>
+        <el-table-column label="操作" width="200" align="center">
           <template #default="scope">
             <el-button size="small" text type="primary" @click="onOpenEditDic(scope.row)">修改</el-button>
             <el-button size="small" text type="primary" @click="onRowDel(scope.row)">删除</el-button>

@@ -32,16 +32,16 @@
           </el-form-item>
         </el-form>
       </div>
-      <el-table :data="tableData.data" style="width: 100%" @selection-change="handleSelectionChange">
+      <el-table :data="tableData.data" style="width: 100%" @selection-change="handleSelectionChange" border>
         <el-table-column type="selection" width="55" align="center" />
-        <el-table-column type="index" label="序号" width="60" />
-        <el-table-column prop="uuid" label="会话编号" show-overflow-tooltip></el-table-column>
-        <el-table-column prop="userName" label="登录名称"></el-table-column>
-        <el-table-column prop="ip" label="主机"></el-table-column>
-        <el-table-column prop="explorer" label="浏览器" show-overflow-tooltip></el-table-column>
+        <el-table-column type="index" label="序号" width="60" align="center" />
+        <el-table-column prop="uuid" label="会话编号" show-overflow-tooltip align="center"></el-table-column>
+        <el-table-column prop="userName" label="登录名称" align="center"></el-table-column>
+        <el-table-column prop="ip" label="主机" align="center"></el-table-column>
+        <el-table-column prop="explorer" label="浏览器" show-overflow-tooltip align="center"></el-table-column>
         <el-table-column label="操作系统" align="center" prop="os" />
-        <el-table-column prop="createTime" label="创建时间"></el-table-column>
-        <el-table-column label="操作" width="100">
+        <el-table-column prop="createTime" label="创建时间" align="center"></el-table-column>
+        <el-table-column label="操作" width="100" align="center">
           <template #default="scope">
             <el-button size="small" text type="primary" @click="onRowDel(scope.row)">强退</el-button>
           </template>

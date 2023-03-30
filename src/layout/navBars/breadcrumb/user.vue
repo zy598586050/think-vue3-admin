@@ -58,7 +58,7 @@
 				:class="!isScreenfull ? 'icon-fullscreen' : 'icon-tuichuquanping'"></i>
 		</div>
 		<el-dropdown :show-timeout="70" :hide-timeout="50" @command="onHandleCommandClick">
-			<span class="layout-navbars-breadcrumb-user-link">
+			<span class="layout-navbars-breadcrumb-user-link cursor-pointer">
 				<img :src="userInfos.avatar" class="layout-navbars-breadcrumb-user-link-photo mr5" />
 				{{ userInfos.userName === '' ? 'common' : userInfos.userName }}
 				<el-icon class="el-icon--right">

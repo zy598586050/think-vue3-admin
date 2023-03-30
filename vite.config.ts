@@ -28,15 +28,15 @@ export default defineConfig((mode: ConfigEnv) => {
 			include: ['element-plus/lib/locale/lang/zh-cn', 'element-plus/lib/locale/lang/en', 'element-plus/lib/locale/lang/zh-tw'],
 		},
 		server: {
-			host: '0.0.0.0',
+			host: '127.0.0.1',
 			port: env.VITE_PORT as unknown as number,
 			open: env.VITE_OPEN,
 			proxy: {
-				'/gitee': {
-					target: 'https://gitee.com',
+				'/admin': {
+					target: 'http://127.0.0.1:8808/',
 					ws: true,
 					changeOrigin: true,
-					rewrite: (path) => path.replace(/^\/gitee/, ''),
+					rewrite: (path) => path.replace(/^\/admin/, ''),
 				},
 			},
 		},

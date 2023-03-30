@@ -4,11 +4,11 @@
 			<div class="system-user-search mb15">
 				<el-form :inline="true">
 					<el-form-item label="角色名称">
-						<el-input size="default" v-model="tableData.param.roleName" placeholder="请输入角色名称" class="w-50 m-2"
+						<el-input size="default" v-model="tableData.param.roleName" placeholder="请输入角色名称" class="w-50"
 							clearable />
 					</el-form-item>
 					<el-form-item label="状态">
-						<el-select size="default" placeholder="请选择状态" class="w-50 m-2" v-model="tableData.param.roleStatus"
+						<el-select size="default" placeholder="请选择状态" class="w-50" v-model="tableData.param.roleStatus"
 							clearable>
 							<el-option label="启用" value="1" />
 							<el-option label="禁用" value="0" />
@@ -30,19 +30,19 @@
 					</el-form-item>
 				</el-form>
 			</div>
-			<el-table :data="tableData.data" style="width: 100%">
-				<el-table-column type="index" label="序号" width="60" />
-				<el-table-column prop="name" label="角色名称" show-overflow-tooltip></el-table-column>
-				<el-table-column prop="listOrder" label="排序" show-overflow-tooltip></el-table-column>
-				<el-table-column prop="status" label="角色状态" show-overflow-tooltip>
+			<el-table :data="tableData.data" style="width: 100%" border>
+				<el-table-column type="index" label="序号" width="60" align="center" />
+				<el-table-column prop="name" label="角色名称" show-overflow-tooltip align="center"></el-table-column>
+				<el-table-column prop="listOrder" label="排序" show-overflow-tooltip align="center"></el-table-column>
+				<el-table-column prop="status" label="角色状态" show-overflow-tooltip align="center">
 					<template #default="scope">
 						<el-tag type="success" v-if="scope.row.status === 1">启用</el-tag>
 						<el-tag type="info" v-else>禁用</el-tag>
 					</template>
 				</el-table-column>
 				<el-table-column prop="remark" label="角色描述" show-overflow-tooltip></el-table-column>
-				<el-table-column prop="createdAt" label="创建时间" show-overflow-tooltip></el-table-column>
-				<el-table-column label="操作" width="220">
+				<el-table-column prop="createdAt" label="创建时间" show-overflow-tooltip align="center"></el-table-column>
+				<el-table-column label="操作" width="220" align="center">
 					<template #default="scope">
 						<el-button size="small" text type="primary"
 							@click="onOpenEditRole(scope.row)"><el-icon><ele-EditPen /></el-icon>修改</el-button>

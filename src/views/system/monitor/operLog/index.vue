@@ -72,7 +72,7 @@
           </el-col>
         </el-row>
       </div>
-      <el-table v-loading="loading" :data="tableData.data" @selection-change="handleSelectionChange">
+      <el-table v-loading="loading" :data="tableData.data" @selection-change="handleSelectionChange" border>
         <el-table-column type="selection" width="55" align="center" />
         <el-table-column label="日志编号" align="center" prop="operId" min-width="100px" />
         <el-table-column label="系统模块" align="center" prop="title" min-width="100px" />

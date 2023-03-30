@@ -1,7 +1,8 @@
 <template>
 	<div class="login-scan-container">
-		<div ref="qrcodeRef"></div>
-		<div class="font12 mt20 login-msg">{{ $t('message.scan.text') }}</div>
+		<!-- <div ref="qrcodeRef"></div> -->
+		<img src="https://www.zhangyubk.com/img/wechat.png"/>
+		<!-- <div class="font12 mt20 login-msg">{{ $t('message.scan.text') }}</div> -->
 	</div>
 </template>
 
@@ -15,7 +16,7 @@ const qrcodeRef = ref<HTMLElement | null>(null);
 const initQrcode = () => {
 	(qrcodeRef.value as HTMLElement).innerHTML = '';
 	new QRCode(qrcodeRef.value, {
-		text: `https://qm.qq.com/cgi-bin/qm/qr?k=CDO9yYdygFMKdQihlUXj4-Y0RDEhPTsh&authKey=vw/uQT5H4L/Kb0zT1gj7dd0PVtUDm9RdWqz4cztJb/QmPaSdyS/yeRHhjZaUj43v&noverify=0`,
+		text: `https://www.zhangyubk.com/img/wechat.png`,
 		width: 260,
 		height: 260,
 		colorDark: '#000000',
@@ -24,7 +25,7 @@ const initQrcode = () => {
 };
 // 页面加载时
 onMounted(() => {
-	initQrcode();
+	// initQrcode();
 });
 </script>
 

@@ -7,7 +7,7 @@
             <el-scrollbar>
               <el-input :prefix-icon="search" v-model="filterText" placeholder="请输入部门名称" clearable size="default"
                 style="width: 80%;" />
-              <el-tree ref="treeRef" class="filter-tree" :data="deptData" :props="deptProps" default-expand-all
+              <el-tree ref="treeRef" class="filter-tree mt-4" :data="deptData" :props="deptProps" default-expand-all
                 :filter-node-method="deptFilterNode" @node-click="handleNodeClick" />
             </el-scrollbar>
           </el-aside>
@@ -65,27 +65,27 @@
               </el-form-item>
             </el-form>
           </div>
-          <el-table :data="tableData.data" style="width: 100%" @selection-change="handleSelectionChange">
+          <el-table :data="tableData.data" style="width: 100%" @selection-change="handleSelectionChange" border>
             <el-table-column type="selection" width="55" align="center" />
-            <el-table-column type="index" label="序号" width="60" />
-            <el-table-column prop="userName" label="账户名称" show-overflow-tooltip></el-table-column>
-            <el-table-column prop="userNickname" label="用户昵称" show-overflow-tooltip></el-table-column>
-            <el-table-column prop="dept.deptName" label="部门" show-overflow-tooltip></el-table-column>
+            <el-table-column type="index" label="序号" width="60" align="center" />
+            <el-table-column prop="userName" label="账户名称" show-overflow-tooltip align="center"></el-table-column>
+            <el-table-column prop="userNickname" label="用户昵称" show-overflow-tooltip align="center"></el-table-column>
+            <el-table-column prop="dept.deptName" label="部门" show-overflow-tooltip align="center"></el-table-column>
             <el-table-column label="角色" align="center" prop="roleInfo" :show-overflow-tooltip="true">
               <template #default="scope">
                 <span v-for="(item, index) of scope.row.roleInfo" :key="'role-' + index"> {{ item.name + ' ' }} </span>
               </template>
             </el-table-column>
-            <el-table-column prop="mobile" label="手机号" show-overflow-tooltip></el-table-column>
-            <el-table-column prop="userStatus" label="用户状态" show-overflow-tooltip>
+            <el-table-column prop="mobile" label="手机号" show-overflow-tooltip align="center"></el-table-column>
+            <el-table-column prop="userStatus" label="用户状态" show-overflow-tooltip align="center">
               <template #default="scope">
                 <el-switch v-model="scope.row.userStatus" inline-prompt :active-value="1" :inactive-value="0"
                   active-text="启" inactive-text="禁" @change="handleStatusChange(scope.row)">
                 </el-switch>
               </template>
             </el-table-column>
-            <el-table-column prop="createdAt" label="创建时间" show-overflow-tooltip></el-table-column>
-            <el-table-column label="操作" width="200">
+            <el-table-column prop="createdAt" label="创建时间" show-overflow-tooltip align="center"></el-table-column>
+            <el-table-column label="操作" width="200" align="center">
               <template #default="scope">
                 <el-button size="small" text type="primary" @click="onOpenEditUser(scope.row)">修改</el-button>
                 <el-button size="small" text type="primary" @click="onRowDel(scope.row)">删除</el-button>

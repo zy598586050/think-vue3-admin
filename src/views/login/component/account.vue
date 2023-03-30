@@ -39,7 +39,7 @@
       </el-col>
     </el-form-item>
     <el-form-item class="login-animation4">
-      <el-button type="primary" class="login-content-submit" round @click="onSignIn" :loading="loading.signIn">
+      <el-button color="rgba(99, 102, 241, 1)" type="primary" class="login-content-submit" round @click="onSignIn" :loading="loading.signIn">
         <span>{{ $t('message.account.accountBtnText') }}</span>
       </el-button>
     </el-form-item>

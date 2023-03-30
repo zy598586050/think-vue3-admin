@@ -21,7 +21,7 @@
 			</el-col>
 		</el-form-item>
 		<el-form-item class="login-animation3">
-			<el-button round type="primary" class="login-content-submit">
+			<el-button round type="primary" class="login-content-submit" color="rgba(99, 102, 241, 1)">
 				<span>{{ $t('message.mobile.btnText') }}</span>
 			</el-button>
 		</el-form-item>

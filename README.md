@@ -1,5 +1,5 @@
 <div align="center">
-	<img src="https://github.com/zy598586050/think-vue3-admin/blob/master/public/login.png">
+	<img src="https://github.com/zy598586050/think-vue3-admin/blob/master/public/logo.png">
 	<p align="center">
 	    <a href="https://v3.vuejs.org/" target="_blank">
 	        <img src="https://img.shields.io/badge/vue.js-vue3.x-green" alt="vue">

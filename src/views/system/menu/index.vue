@@ -4,12 +4,12 @@
 			<div class="system-menu-search mb15">
 				<el-form :inline="true">
 					<el-form-item label="菜单名称">
-						<el-input v-model="queryParams.title" placeholder="请输入菜单名称" clearable class="w-50 m-2"
+						<el-input v-model="queryParams.title" placeholder="请输入菜单名称" clearable class="w-50"
 							size="default" />
 					</el-form-item>
 					<el-form-item label="组件路径">
 						<el-input v-model="queryParams.component" placeholder="请输入组件路径" clearable size="default"
-							class="w-50 m-2" />
+							class="w-50" />
 					</el-form-item>
 					<el-form-item>
 						<el-button size="default" type="primary" class="ml10" @click="handleQuery">

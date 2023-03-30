@@ -57,7 +57,7 @@
           </el-form-item>
         </el-form>
       </div>
-      <el-table :data="tableData.data" style="width: 100%" @selection-change="handleSelectionChange">
+      <el-table :data="tableData.data" style="width: 100%" @selection-change="handleSelectionChange" border>
         <el-table-column type="selection" width="55" align="center" />
         <el-table-column label="编号" align="center" prop="infoId" />
         <el-table-column label="登录名称" align="center" prop="loginName" />
@@ -68,7 +68,7 @@
         <el-table-column label="登录状态" align="center" prop="status" :formatter="statusFormat" />
         <el-table-column label="操作信息" align="center" prop="msg" />
         <el-table-column label="登录日期" align="center" prop="loginTime" width="180" />
-        <el-table-column label="登录模块" alian="center" prop="module"></el-table-column>
+        <el-table-column label="登录模块" align="center" alian="center" prop="module"></el-table-column>
       </el-table>
       <pagination v-show="tableData.total > 0" :total="tableData.total" v-model:page="tableData.param.pageNum"
         v-model:limit="tableData.param.pageSize" @pagination="dataList" />
