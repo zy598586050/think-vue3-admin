@@ -27,13 +27,13 @@ const state = reactive({
 	newsList: [
 		{
 			label: '关于版本发布的通知',
-			value: 'vue-next-admin，基于 vue3 + CompositionAPI + typescript + vite + element plus，正式发布时间：2021年02月28日！',
-			time: '2020-12-08',
+			value: 'ThinkJS于2021年发布初始版本，官方地址：www.think-js.cn',
+			time: '2023-3-31',
 		},
 		{
 			label: '关于学习交流的通知',
-			value: 'QQ群号码 665452019，欢迎小伙伴入群学习交流探讨！',
-			time: '2020-12-08',
+			value: '微信号 zhangyubk ，欢迎小伙伴共同交流学习！',
+			time: '2023-3-31',
 		},
 	],
 });
@@ -43,7 +43,7 @@ const onAllReadClick = () => {
 };
 // 前往通知中心点击
 const onGoToGiteeClick = () => {
-	window.open('https://gitee.com/tiger1103/gfast');
+	window.open('https://www.think-js.cn');
 };
 const { newsList } = toRefs(state)
 </script>

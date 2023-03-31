@@ -1,5 +1,5 @@
 <div align="center">
-	<img src="https://github.com/zy598586050/think-vue3-admin/blob/master/public/logo.png">
+	<img style="width: 150px;height: 150px;margin-bottom: 20px;" src="https://github.com/zy598586050/think-vue3-admin/blob/master/public/logo.png">
 	<p align="center">
 	    <a href="https://v3.vuejs.org/" target="_blank">
 	        <img src="https://img.shields.io/badge/vue.js-vue3.x-green" alt="vue">
@@ -31,6 +31,7 @@
 | ![Edge](https://cdn.jsdelivr.net/npm/@browser-logos/edge/edge_32x32.png) | ![Firefox](https://cdn.jsdelivr.net/npm/@browser-logos/firefox/firefox_32x32.png) | ![Chrome](https://cdn.jsdelivr.net/npm/@browser-logos/chrome/chrome_32x32.png) | ![Safari](https://cdn.jsdelivr.net/npm/@browser-logos/safari/safari_32x32.png) |
 
 > 由于 Vue3 不再支持 IE11，故而 ElementPlus 也不支持 IE11 及之前版本。
+
 #### ⚡ 使用说明
 
 ```bash
@@ -39,12 +40,34 @@ git clone https://github.com/zy598586050/think-vue3-admin
 # 进入项目
 cd think-vue3-admin
 # 安装依赖
-cnpm install
+npm install
 # 运行项目
-cnpm run dev
+npm run dev
 # 打包发布
-cnpm run build
+npm run build
 ```
+
+## 演示图
+
+<table>
+    <tr>
+        <td><img src="https://github.com/zy598586050/think-vue3-admin/blob/master/public/1.png"/></td>
+        <td><img src="https://github.com/zy598586050/think-vue3-admin/blob/master/public/2.png"/></td>
+    </tr>
+    <tr>
+        <td><img src="https://github.com/zy598586050/think-vue3-admin/blob/master/public/3.png"/></td>
+        <td><img src="https://github.com/zy598586050/think-vue3-admin/blob/master/public/4.png"/></td>
+    </tr>
+    <tr>
+        <td><img src="https://github.com/zy598586050/think-vue3-admin/blob/master/public/5.png"/></td>
+        <td><img src="https://github.com/zy598586050/think-vue3-admin/blob/master/public/6.png"/></td>
+    </tr>
+	<tr>
+        <td><img src="https://github.com/zy598586050/think-vue3-admin/blob/master/public/7.png"/></td>
+        <td><img src="https://github.com/zy598586050/think-vue3-admin/blob/master/public/8.png"/></td>
+    </tr>
+</table>
+
 ## ❤特别鸣谢
 
 * 感谢[gfast-ui](https://github.com/tiger1103/gfast-ui)

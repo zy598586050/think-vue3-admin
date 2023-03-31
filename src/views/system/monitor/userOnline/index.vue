@@ -4,10 +4,10 @@
       <div class="system-user-search mb15">
         <el-form :model="tableData.param" ref="queryRef" :inline="true">
           <el-form-item label="登录IP" prop="ipaddr">
-            <el-input size="default" v-model="tableData.param.ipaddr" placeholder="请输入登录IP" class="w-50 m-2" clearable />
+            <el-input size="default" v-model="tableData.param.ipaddr" placeholder="请输入登录IP" class="w-50" clearable />
           </el-form-item>
           <el-form-item label="用户名称" prop="userName">
-            <el-input size="default" v-model="tableData.param.userName" placeholder="请输入登录名称" class="w-50 m-2"
+            <el-input size="default" v-model="tableData.param.userName" placeholder="请输入登录名称" class="w-50"
               clearable />
           </el-form-item>
           <el-form-item>

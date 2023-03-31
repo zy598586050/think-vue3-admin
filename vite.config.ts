@@ -32,8 +32,8 @@ export default defineConfig((mode: ConfigEnv) => {
 			port: env.VITE_PORT as unknown as number,
 			open: env.VITE_OPEN,
 			proxy: {
-				'/admin': {
-					target: 'http://127.0.0.1:8808/',
+				'/api': {
+					target: 'https://tv3a.think-js.cn/api',
 					ws: true,
 					changeOrigin: true,
 					rewrite: (path) => path.replace(/^\/admin/, ''),
