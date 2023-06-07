@@ -14,12 +14,12 @@ const alias: Record<string, string> = {
 
 // https://vitejs.dev/config/
 export default defineConfig((mode: ConfigEnv) => {
-  const env = loadEnv(mode.mode, process.cwd())
-  return {
-    plugins: [
-      vue(),
-      Windicss()
-    ],
+	const env = loadEnv(mode.mode, process.cwd())
+	return {
+		plugins: [
+			vue(),
+			Windicss()
+		],
 		root: process.cwd(),
 		resolve: { alias },
 		base: mode.command === 'serve' ? './' : env.VITE_PUBLIC_PATH,
@@ -40,23 +40,24 @@ export default defineConfig((mode: ConfigEnv) => {
 				},
 			},
 		},
-    build: {
+		build: {
 			outDir: 'dist',
 			sourcemap: false,
 			chunkSizeWarningLimit: 1500,
 			rollupOptions: {
 				output: {
 					chunkFileNames: 'static/js/[name]-[hash].js',
-          entryFileNames: 'static/js/[name]-[hash].js',
-          assetFileNames: 'static/[ext]/[name]-[hash].[ext]',
+					entryFileNames: 'static/js/[name]-[hash].js',
+					assetFileNames: 'static/[ext]/[name]-[hash].[ext]',
 					compact: true,
 					manualChunks: {
 						vue: ['vue', 'vue-router', 'pinia'],
 						echarts: ['echarts'],
 					},
 				},
+				external: ['codemirror']
 			},
 		},
 		css: { preprocessorOptions: { css: { charset: false } } },
-  }
+	}
 })
